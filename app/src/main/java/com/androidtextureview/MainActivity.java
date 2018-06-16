@@ -2,6 +2,8 @@ package com.androidtextureview;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
 import android.os.Environment;
@@ -11,8 +13,10 @@ import android.util.Log;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.TextureView;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -26,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     TextureView textureView;
     MediaPlayer mediaPlayer;
     SurfaceTexture texture;
+    ImageView iv;
     Surface surface;
     public static final String VIDEO_PATH =
             Environment.getExternalStorageDirectory()+"/schoolgirls.mp4";
@@ -37,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         requestPerm();
-
+        iv = findViewById(R.id.iv);
         textureView = findViewById(R.id.texture);
         textureView.setSurfaceTextureListener(new TextureView.SurfaceTextureListener() {
             @Override
@@ -153,6 +158,14 @@ public class MainActivity extends AppCompatActivity {
             mediaPlayer.release();
             mediaPlayer =null;
         }
+    }
+
+    /**
+     * 截图
+     * @param view
+     */
+    public void screen(View view) {
+        iv.setImageBitmap(textureView.getBitmap());
     }
 
 }
