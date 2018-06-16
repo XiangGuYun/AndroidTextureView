@@ -6,9 +6,9 @@
 ### TextureView的特点
 ①：与SurfaceView一样在子线程中绘制。
 
-②：没有运行在独立的surface中，因此可以运用普通View的api，必须在硬件加速开启的窗口中。
+②：没有运行在独立的surface中，因此可以运用普通View的api。
 
-③：TextureView比SurfaceView更耗内存，而且可能会有1～3帧的延迟
+③：必须在硬件加速开启的窗口中，TextureView比SurfaceView更耗内存，而且可能会有1～3帧的延迟。
 
     mTexture = (TextureView) findViewById(R.id.textureView);
 	mTexture.setSurfaceTextureListener(new TextureView.SurfaceTextureListener() {
